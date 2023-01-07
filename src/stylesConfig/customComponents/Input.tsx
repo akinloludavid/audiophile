@@ -2,32 +2,33 @@
 
 const search = {
   field: {
-    caretColor: "#fc4747",
-    borderRadius: "none",
-    paddingBottom: "15px",
-    border: "none",
+    caretColor: "#D87D4A",
+    borderRadius: "8px",
+    padding: "18px 24px",
+    border: "1px solid #CFCFCF",
     outline: "none",
     bgColor: "transparent",
     fontSize: "24px",
     fontWeight: "300",
     lineHeight: "30px",
-    w: ["100%"],
+    w: ["309px"],
+    h: "56px",
     color: "#fff",
     _placeholder: {
-      color: "#fff",
-      opacity: 0.5,
-      fontSize: ["16px", "24px"],
-      fontWeight: "300",
-      lineHeight: "30px",
+      color: "#000000",
+      opacity: 0.4,
+      fontSize: ["14px"],
+      fontWeight: "700",
+      lineHeight: "19px",
     },
     _focus: {
-      borderBottom: "1px solid #5A698F",
+      border: "1px solid #D87D4A",
     },
   },
 };
 const primary = {
   field: {
-    caretColor: "#fc4747",
+    caretColor: "#D87D4A",
     borderRadius: "none",
     paddingBottom: "18px",
     border: "none",

@@ -1,7 +1,7 @@
 export const TextStyle = {
   // style object for base or default style
   baseStyle: {
-    color: "#ffffff",
+    color: "#D87D4A",
   },
   // styles for different sizes ("sm", "md", "lg")
   sizes: {},
@@ -9,17 +9,19 @@ export const TextStyle = {
   variants: {
     mainText: {
       fontSize: "15px",
-      fontWeight: "300",
-      lineHeight: "19px",
+      fontWeight: "500",
+      lineHeight: "25px",
+      letterSpacing: "10px",
     },
     lightText: {
       fontSize: "13px",
-      fontWeight: "300",
+      fontWeight: "500",
       lineHeight: "17px",
+      letterSpacing: "1px",
     },
   },
   // default values for `size` and `variant`
   defaultProps: {
-    variant: "primary",
+    variant: "mainText",
   },
 };

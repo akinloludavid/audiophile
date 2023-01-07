@@ -1,7 +1,12 @@
-import React from "react";
+import { Box, Button, Heading } from "@chakra-ui/react";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <Box>
+      <Heading></Heading>
+      <Button variant={"link"}>see product</Button>
+    </Box>
+  );
 };
 
 export default HomePage;

@@ -9,22 +9,67 @@ export const ButtonStyles = {
   // styles for different visual variants ("outline", "solid")
   variants: {
     primary: (props: any) => ({
-      bg: "btnBgColor",
-      fontSize: "15px",
-      fontWeight: "300",
-      lineHeight: "19px",
-      borderRadius: "6px",
+      bg: "pryColor",
+      fontSize: "13px",
+      fontWeight: "700",
+      lineHeight: "18px",
       color: "white",
-      width: "336px",
+      textTransform: "uppercase",
+      width: "160px",
+      height: "48px",
+      borderRadius: "0px",
       _hover: {
-        bg: "white",
-        color: "#161d2f",
+        bgColor: "pryHoverBtnBg",
+        color: "white",
       },
       "@media (max-width:480px)": {
-        maxWidth: "279px",
+        maxWidth: "160px",
+      },
+    }),
+    secondary: (props: any) => ({
+      bg: "white",
+      width: "160px",
+      height: "48px",
+      fontSize: "13px",
+      fontWeight: "700",
+      lineHeight: "18px",
+      color: "textColor",
+      borderRadius: "0px",
+      border: "1px solid #000000",
+      textTransform: "uppercase",
+      _hover: {
+        bgColor: "#000000",
+        color: "white",
+      },
+      "@media (max-width:480px)": {
+        maxWidth: "160px",
+      },
+    }),
+    link: (props: any) => ({
+      bg: "white",
+      width: "160px",
+      height: "48px",
+      fontSize: "13px",
+      fontWeight: "700",
+      lineHeight: "18px",
+      color: "textColor",
+      opacity: "0.5",
+      borderRadius: "0px",
+      border: "0px",
+      textTransform: "uppercase",
+      textDecoration: "none",
+      _hover: {
+        bgColor: "none",
+        color: "#D87D4A",
+        opacity: "1",
+        textDecoration: "none",
+      },
+      "@media (max-width:480px)": {
+        maxWidth: "160px",
       },
     }),
   },
+
   // default values for `size` and `variant`
   defaultProps: {
     variant: "primary",
