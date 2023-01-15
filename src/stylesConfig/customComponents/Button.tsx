@@ -27,7 +27,7 @@ export const ButtonStyles = {
       },
     }),
     secondary: (props: any) => ({
-      bg: "white",
+      bg: "transparent",
       width: "160px",
       height: "48px",
       fontSize: "13px",
@@ -74,4 +74,4 @@ export const ButtonStyles = {
   defaultProps: {
     variant: "primary",
   },
-};
+}

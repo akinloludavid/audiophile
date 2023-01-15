@@ -1,14 +1,18 @@
-import { Box } from "@chakra-ui/react"
-import { IChildren } from "../../types"
-import Navbar from "../Navbar"
+import { Box } from "@chakra-ui/react";
+import { IChildren } from "../../types";
+import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const PageLayout = ({ children }: IChildren) => {
   return (
-    <Box>
+    <Box display={"flex"} flexDirection="column" minH="100vh" w="100vw">
       <Navbar />
       {children}
+      <Box mt="auto">
+        <Footer />
+      </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default PageLayout
+export default PageLayout;

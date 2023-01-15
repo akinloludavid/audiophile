@@ -1,3 +1,5 @@
+import { colors } from "./colors";
+
 export const HeadingStyle = {
   // style object for base or default style
   baseStyle: {
@@ -11,42 +13,42 @@ export const HeadingStyle = {
       fontSize: "56px",
       fontWeight: "700",
       lineHeight: "58px",
-      color: "textColor",
+      color: colors.textColor,
       letterSpacing: "2px",
     },
     h2: {
       fontSize: "40px",
       fontWeight: "700",
       lineHeight: "44px",
-      color: "textColor",
+      color: colors.textColor,
       letterSpacing: "2px",
     },
     h3: {
       fontSize: "32px",
       fontWeight: "700",
       lineHeight: "36px",
-      color: "textColor",
+      color: colors.textColor,
       letterSpacing: "2px",
     },
     h4: {
       fontSize: "28px",
       fontWeight: "700",
       lineHeight: "38px",
-      color: "textColor",
+      color: colors.textColor,
       letterSpacing: "2px",
     },
     h5: {
       fontSize: "24px",
       fontWeight: "700",
       lineHeight: "33px",
-      color: "textColor",
+      color: colors.textColor,
       letterSpacing: "1.7px",
     },
     h6: {
       fontSize: "18px",
       fontWeight: "700",
       lineHeight: "25px",
-      color: "textColor",
+      color: colors.textColor,
       letterSpacing: "1.3px",
     },
   },
