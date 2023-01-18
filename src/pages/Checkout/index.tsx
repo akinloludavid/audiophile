@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -38,7 +38,7 @@ const CheckoutPage = () => {
 
   const vat = Number((totalAmount * 0.2).toFixed(2));
   const shippingFees = 50;
-  const grandTotal = (vat + totalAmount).toLocaleString();
+  const grandTotal = Number((vat + totalAmount).toFixed(2));
   const initialValues = {
     fullname: "",
     email: "",
@@ -76,9 +76,11 @@ const CheckoutPage = () => {
     navigate(HOME);
     emptyCart();
   };
-  if (cart.length === 0) {
-    navigate(HOME);
-  }
+  useEffect(() => {
+    if (cart.length === 0) {
+      navigate(HOME);
+    }
+  }, [cart.length]);
   return (
     <>
       <ModalContainer
@@ -736,7 +738,7 @@ const CheckoutPage = () => {
                       >
                         <Text>GRAND TOTAL</Text>
                         <Text color="pryColor" fontWeight={"700"} opacity={1}>
-                          ${Number(grandTotal).toLocaleString()}
+                          ${grandTotal}
                         </Text>
                       </Flex>
                       <Button

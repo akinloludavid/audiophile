@@ -64,7 +64,7 @@ const CartSection = ({ setShowCart }: ICartSection) => {
     >
       <Box
         w="377px"
-        h="488px"
+        h={cart.length === 0 ? "280px" : "488px"}
         overflowY={"scroll"}
         bgColor="white"
         right="0"
