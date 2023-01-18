@@ -187,10 +187,9 @@ const CartSection = ({ setShowCart }: ICartSection) => {
           </Text>
         </Flex>
         <Button
-          w="100%"
+          minW="100%"
           mt="auto"
           minH="48px"
-          // minW={"100%"}
           isDisabled={cart.length === 0}
           _disabled={{
             bgColor: "#F1F1F1",
