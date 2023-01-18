@@ -69,12 +69,15 @@ const CartSection = ({ setShowCart }: ICartSection) => {
         bgColor="white"
         right="0"
         top="0"
+        display="flex"
+        flexDirection={"column"}
         borderRadius="8px"
         outline={"none"}
         p="32px"
         ref={boxRef}
         tabIndex={1}
         onBlur={handleBlur}
+        position="relative"
       >
         <Flex justify="space-between" align="center">
           <Heading color="secColor" as="h5" fontSize={"18px"} fontWeight="700">
@@ -185,7 +188,9 @@ const CartSection = ({ setShowCart }: ICartSection) => {
         </Flex>
         <Button
           w="100%"
-          minW={"100%"}
+          mt="auto"
+          minH="48px"
+          // minW={"100%"}
           isDisabled={cart.length === 0}
           _disabled={{
             bgColor: "#F1F1F1",
