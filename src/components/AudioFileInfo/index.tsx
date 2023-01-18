@@ -1,5 +1,5 @@
 import { Box, Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
-import { BestGear, BestGearMobile, BestGearTablet } from "../../assets";
+import { BestGear, BestGearMobile, BestGearTablet } from "../../asset";
 import useCustomMediaQuery from "../../customHooks/mediaQuery";
 
 const AudioPhileInfo = () => {

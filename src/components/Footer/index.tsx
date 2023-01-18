@@ -14,7 +14,7 @@ import {
   RiFacebookBoxFill,
   RiTwitterFill,
 } from "react-icons/ri";
-import { Logo } from "../../assets";
+import { Logo } from "../../asset";
 import MainContainer from "../MainContainer";
 import { navLinks } from "../Navbar";
 

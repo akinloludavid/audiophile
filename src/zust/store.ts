@@ -18,5 +18,3 @@ export const headphonesSelector = (state: IState) => state.allHeadphones;
 export const speakersSelector = (state: IState) => state.allSpeakers;
 export const productSelector = (state: IState) => state.product;
 export const setProductIdSelector = (state: IState) => state.setProductId;
-export const setCountSelector = (state: IState) => state.setCount;
-export const countSelector = (state: IState) => state.count;

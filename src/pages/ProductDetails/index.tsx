@@ -9,43 +9,60 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { nanoid } from "nanoid";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { SpeakerBg } from "../../asset";
 import AudioPhileInfo from "../../components/AudioFileInfo";
 import GoBack from "../../components/GoBack";
 import MainContainer from "../../components/MainContainer";
-import {
-  productSelector,
-  setProductIdSelector,
-  useZustStore,
-} from "../../zust/store";
+import useCustomMediaQuery from "../../customHooks/mediaQuery";
+import db from "../../data.json";
+import { useZustStore } from "../../zust/store";
 import CategorySection from "../Home/CategorySection";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
+  const [productCount, setProductCount] = useState(1);
+  const { addToCart } = useZustStore((state) => state);
   const { id = "" } = useParams();
-  const setProductId = useZustStore(setProductIdSelector);
-  const product = useZustStore(productSelector);
-  setProductId(id);
-  console.log(product);
+  const product = db.filter((el) => String(el.id) === id || el.slug === id)[0];
+
+  const { isMobile, isTablet } = useCustomMediaQuery();
+  const increaseProductQty = () => {
+    setProductCount((prev) => prev + 1);
+  };
+  const decreaseProductQty = () => {
+    setProductCount((prev) => Math.max(1, prev - 1));
+  };
+  const handleAddProductToCart = () => {
+    addToCart({ ...product, quantity: productCount });
+  };
   return (
     <>
-      <MainContainer flexDir={"column"} mt={["79px"]}>
+      <MainContainer flexDir={"column"}>
         <GoBack />
 
         <Grid
-          mt="56px"
           templateColumns={["repeat(1,1fr)", "repeat(1,1fr)", "repeat(2,1fr)"]}
-          gap={["40px", "40px", "125px"]}
+          gap={["40px", "40px", "64px", "125px"]}
         >
           <GridItem
             bgColor="#F1F1F1"
             justifyContent="center"
             alignItems="center"
+            maxH="520px"
           >
             <Image
-              w={["100%", "281px", "281px", "540px"]}
-              h="560px"
-              src={product.image.desktop}
+              w={["100%", "100%", "100%", "100%"]}
+              h={["100%", "100%", "480px", "520px"]}
+              borderRadius="8px"
+              src={
+                isMobile
+                  ? product.image.mobile
+                  : isTablet
+                  ? product.image.tablet
+                  : product.image.desktop
+              }
               alt={product.name}
             />
           </GridItem>
@@ -90,13 +107,18 @@ const ProductDetails = () => {
                       as="h6"
                       textAlign={"center"}
                       cursor="pointer"
+                      onClick={decreaseProductQty}
+                      _hover={{
+                        color: "pryColor",
+                        opacity: 1,
+                      }}
                     >
                       -
                     </Heading>
                   </GridItem>
                   <GridItem colSpan={2}>
                     <Heading variant="h6" as="h6" textAlign={"center"}>
-                      1
+                      {productCount}
                     </Heading>
                   </GridItem>
                   <GridItem colSpan={3}>
@@ -106,12 +128,19 @@ const ProductDetails = () => {
                       as="h6"
                       textAlign={"center"}
                       cursor="pointer"
+                      onClick={increaseProductQty}
+                      _hover={{
+                        color: "pryColor",
+                        opacity: 1,
+                      }}
                     >
                       +
                     </Heading>
                   </GridItem>
                 </Grid>
-                <Button>ADD TO CART</Button>
+                <Button w={["auto", "160px"]} onClick={handleAddProductToCart}>
+                  ADD TO CART
+                </Button>
               </Flex>
             </Box>
           </GridItem>
@@ -142,7 +171,12 @@ const ProductDetails = () => {
             display={["flex"]}
             w={["100%"]}
             flexDirection={["column", "column", "row", "column"]}
-            justifyContent={["space-between"]}
+            justifyContent={[
+              "space-between",
+              "space-between",
+              "space-between",
+              "flex-start",
+            ]}
           >
             <Heading as="h3" variant="h3" mb="32px">
               IN THE BOX
@@ -173,46 +207,70 @@ const ProductDetails = () => {
           templateColumns={[
             "repeat(1, 1fr)",
             "repeat(1, 1fr)",
-            "repeat(1, 1fr)",
-
+            "repeat(8, 1fr)",
             "repeat(8, 1fr)",
           ]}
           mb="160px"
-          gap={["18px", "25px", "25px", "75px"]}
+          gap={["18px", "25px", "25px", "25px", "75px"]}
         >
-          <GridItem colSpan={[1, 1, 1, 3]}>
+          <GridItem
+            colSpan={[1, 1, 3, 3]}
+            h={["auto", "auto", "580px", "580px", "635px"]}
+          >
             <Grid
               templateColumns={"repeat(1,1fr)"}
-              gap={["18px", "25px", "25px", "75px"]}
+              gap={["18px", "25px", "25px", "25px", "75px"]}
+              h="auto"
             >
               <GridItem>
                 <Image
                   borderRadius={"8px"}
-                  h={["174px", "174px", "280px", "280px"]}
+                  h={["174px", "100%", "auto", "280px"]}
+                  w={["100%"]}
                   alt={product.name}
-                  src={product.gallery.first.desktop}
+                  src={
+                    isMobile
+                      ? product.gallery.first.mobile
+                      : isTablet
+                      ? product.gallery.first.tablet
+                      : product.gallery.first.desktop
+                  }
                 />
               </GridItem>
               <GridItem>
                 <Image
                   borderRadius={"8px"}
-                  h={["174px", "174px", "280px", "280px"]}
+                  h={["174px", "100%", "auto", "280px"]}
                   alt={product.name}
-                  src={product.gallery.first.desktop}
+                  w={["100%"]}
+                  src={
+                    isMobile
+                      ? product.gallery.second.mobile
+                      : isTablet
+                      ? product.gallery.second.tablet
+                      : product.gallery.second.desktop
+                  }
                 />
               </GridItem>
             </Grid>
           </GridItem>
           <GridItem
-            colSpan={[1, 1, 1, 5]}
-            h={["580px", "580px", "580px", "635px"]}
+            colSpan={[1, 1, 5, 5]}
+            h={["auto", "auto", "auto", "635px"]}
           >
-            <Grid h={["756px", "580px", "580px", "635px"]}>
+            <Grid h={["auto", "auto", "auto", "580px", "635px"]}>
               <Image
-                h="100%"
+                h={["auto", "auto", "582px", "585px", "100%"]}
+                w="100%"
                 borderRadius={"8px"}
                 alt={product.name}
-                src={product.gallery.first.desktop}
+                src={
+                  isMobile
+                    ? product.gallery.third.mobile
+                    : isTablet
+                    ? product.gallery.third.tablet
+                    : product.gallery.third.desktop
+                }
               />
             </Grid>
           </GridItem>
@@ -236,17 +294,26 @@ const ProductDetails = () => {
             gap={["56px", "56px", null]}
           >
             {product.others.map((el: any) => (
-              <Box textAlign={"center"} key={el.slug}>
+              <Box textAlign={"center"} key={el.slug} w="100%">
                 <Box
                   borderRadius={"8px"}
                   bgColor="#F1F1F1"
                   h="318px"
-                  w={["100%", "100%", "223px", "350px"]}
+                  w={["100%"]}
                   display={"flex"}
                   justifyContent="center"
                   alignItems={"center"}
                 >
-                  <Image src={el.image.desktop} alt={el.name} />
+                  <Image
+                    src={
+                      isMobile
+                        ? el.image.mobile
+                        : isTablet
+                        ? el.image.mobile
+                        : el.image.desktop
+                    }
+                    alt={el.name}
+                  />
                 </Box>
                 <Heading variant="h5" as="h5" mb="47px" mt="40px">
                   {el.name}

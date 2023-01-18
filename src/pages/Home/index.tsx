@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { EarphoneImage, SpeakerBg, Zx9Speaker } from "../../assets";
+import { EarphoneImage, SpeakerBg, Zx9Speaker } from "../../asset";
 import AudioPhileInfo from "../../components/AudioFileInfo";
 import MainContainer from "../../components/MainContainer";
 import CategorySection from "./CategorySection";

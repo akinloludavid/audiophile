@@ -1,4 +1,4 @@
-import { EarphoneCategory, HeadsetCategory, SpeakerCategory } from "../assets";
+import { EarphoneCategory, HeadsetCategory, SpeakerCategory } from "../asset";
 import { ICategoryCard } from "../types";
 
 export const categoryList: ICategoryCard[] = [

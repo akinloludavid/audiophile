@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  FlexProps,
-  Heading,
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 interface IFlexBox {
@@ -27,9 +19,8 @@ const FlexBox = ({
   image,
   name,
   new: isNew,
-  id,
+  slug,
   description,
-  category,
   mb = "160px",
 }: IFlexBox) => {
   const navigate = useNavigate();
@@ -89,7 +80,9 @@ const FlexBox = ({
         </Text>
         <Button
           mx={["auto", "auto", "auto", "0"]}
-          onClick={() => navigate(`/product/${id}`)}
+          onClick={() => {
+            navigate(`/product/${slug}`);
+          }}
         >
           SEE PRODUCT
         </Button>

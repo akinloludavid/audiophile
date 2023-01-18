@@ -5,7 +5,7 @@ const useCustomMediaQuery = () => {
     useMediaQuery([
       "(max-width: 480px)",
       "(max-width: 576px)",
-      "(max-width: 768px)",
+      "(max-width: 769px)",
       "(max-width: 992px)",
 
       "(min-width: 1441px)",

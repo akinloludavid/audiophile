@@ -8,6 +8,8 @@ const GoBack = () => {
     <Link
       _hover={{
         textDecoration: "none",
+        color: "pryColor",
+        opacity: 1,
       }}
       width="fit-content"
       variant={"link"}
@@ -17,6 +19,7 @@ const GoBack = () => {
       fontWeight="500"
       fontSize="15px"
       lineHeight=" 25px"
+      my={["16px", "32px", "79px"]}
     >
       Go Back
     </Link>

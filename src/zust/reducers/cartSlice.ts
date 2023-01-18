@@ -11,7 +11,7 @@ export const createCartSlice = (set: Function) => ({
       } else {
         const updatedCart = state.cart.map((product, index) =>
           idx === index
-            ? { ...product, quantity: product.quantity + 1 }
+            ? { ...product, quantity: product.quantity + payload.quantity }
             : product
         );
         return { ...state, cart: updatedCart };
@@ -21,5 +21,33 @@ export const createCartSlice = (set: Function) => ({
     set((state: IState) => {
       const updatedCart = state.cart.filter((el) => el.id !== payload.id);
       return { ...state, cart: updatedCart };
+    }),
+  increaseProductInCart: (payload: any) =>
+    set((state: IState) => {
+      const updatedCart = state.cart.map((el) => {
+        if (String(el.id) === String(payload.id) || el.slug === payload.id) {
+          return {
+            ...el,
+            quantity: el.quantity + 1,
+          };
+        } else return el;
+      });
+      return { ...state, cart: updatedCart };
+    }),
+  decreaseProductInCart: (payload: any) =>
+    set((state: IState) => {
+      const updatedCart = state.cart.map((el) => {
+        if (String(el.id) === String(payload.id) || el.slug === payload.id) {
+          return {
+            ...el,
+            quantity: Math.max(1, el.quantity - 1),
+          };
+        } else return el;
+      });
+      return { ...state, cart: updatedCart };
+    }),
+  emptyCart: () =>
+    set((state: IState) => {
+      return { ...state, cart: [] };
     }),
 });

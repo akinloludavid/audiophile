@@ -7,4 +7,5 @@ export const colors = {
   textColor: "#000000",
   secBgColor: "#161d2f",
   white: "#ffffff",
+  danger: "#CD2C2C",
 };

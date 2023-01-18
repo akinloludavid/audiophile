@@ -3,6 +3,7 @@ import React from "react";
 export interface IAppRoute {
   path: string;
   element: React.ReactNode;
+  errorElement?: React.ReactNode;
 }
 
 export interface IChildren {
@@ -27,8 +28,11 @@ export interface IState {
   allSpeakers: any[];
   allHeadphones: any[];
   cart: any[];
-  count: number;
-  setCount: (e: number) => any;
+  addToCart: (e: any) => void;
+  removeFromCart: (e: any) => void;
+  increaseProductInCart: (e: any) => void;
+  decreaseProductInCart: (e: any) => void;
+  emptyCart: () => any;
   product: any;
   setProductId: (e: any) => any;
 }
@@ -41,4 +45,8 @@ export interface IReducerArgs {
 export interface IMenuProps {
   isOpen: boolean;
   onClose: () => void;
+}
+
+export interface ICartSection {
+  setShowCart: (e: boolean) => void;
 }

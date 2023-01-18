@@ -1,13 +1,15 @@
-import { Box, Flex, Icon, Image, Link as Clink } from "@chakra-ui/react";
+import { Box, Flex, Icon, Image, Link as Clink, Text } from "@chakra-ui/react";
 import MainContainer from "../MainContainer";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import logo from "../../assets/shared/desktop/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { HOME } from "../../routes/pathnames";
 import useCustomMediaQuery from "../../customHooks/mediaQuery";
 import MenuSection from "../MenuSection";
 import { useState } from "react";
+import { useZustStore } from "../../zust/store";
+import CartSection from "../CartSection";
+import { Logo } from "../../asset";
 export const navLinks = [
   { label: "HOME", route: "" },
   { label: "HEADPHONES", route: "/headphones" },
@@ -17,17 +19,26 @@ export const navLinks = [
 const Navbar = () => {
   const navigate = useNavigate();
   const { isTablet } = useCustomMediaQuery();
+  const { cart } = useZustStore((state) => state);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
   const handleToggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
   return (
     <>
       <MenuSection isOpen={isMenuOpen} onClose={handleCloseMenu} />
-      <MainContainer bgColor={"secColor"} w="100vw">
+      <MainContainer
+        bgColor={"secColor"}
+        w="100vw"
+        position="fixed"
+        h="97px"
+        zIndex="999999"
+      >
         <Flex
           justifyContent={"space-between"}
           w="100%"
@@ -44,7 +55,7 @@ const Navbar = () => {
               onClick={handleToggleMenu}
             />
             <Image
-              src={logo}
+              src={Logo}
               alt="Audiophile logo"
               cursor={"pointer"}
               onClick={() => navigate(HOME)}
@@ -70,15 +81,39 @@ const Navbar = () => {
               </Clink>
             ))}
           </Flex>
-
-          <Icon
-            as={AiOutlineShoppingCart}
+          <Box
+            position="relative"
             cursor="pointer"
-            fontSize="24px"
-            color="white"
-          />
+            onClick={() => setShowCart(true)}
+          >
+            <Icon
+              as={AiOutlineShoppingCart}
+              cursor="pointer"
+              fontSize="24px"
+              color="white"
+              zIndex={"9999"}
+            />
+            <Box
+              zIndex={"0"}
+              top="-10px"
+              right="-10px"
+              position="absolute"
+              borderRadius={"50%"}
+              h="16px"
+              w="16px"
+              display={cart.length === 0 ? "none" : "flex"}
+              justifyContent="center"
+              alignItems="center"
+              bgColor={"white"}
+            >
+              <Text fontSize={"12px"} fontWeight="700">
+                {cart.length}
+              </Text>
+            </Box>
+          </Box>
         </Flex>
       </MainContainer>
+      {showCart && <CartSection setShowCart={setShowCart} />}
     </>
   );
 };

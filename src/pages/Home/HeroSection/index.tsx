@@ -1,5 +1,5 @@
 import { Flex, Heading, Button, Box, Text, Image } from "@chakra-ui/react";
-import { HeroImg } from "../../../assets";
+import { HeroImg } from "../../../asset";
 
 export const HeroSection = () => {
   return (
