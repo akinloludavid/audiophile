@@ -37,6 +37,7 @@ const Navbar = () => {
         w="100vw"
         position="fixed"
         h="97px"
+        mx="auto"
         zIndex="999999"
       >
         <Flex

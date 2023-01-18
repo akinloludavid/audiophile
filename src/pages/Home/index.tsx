@@ -4,8 +4,16 @@ import AudioPhileInfo from "../../components/AudioFileInfo";
 import MainContainer from "../../components/MainContainer";
 import CategorySection from "./CategorySection";
 import { HeroSection } from "./HeroSection";
-
+import db from "../../data.json";
+import { useNavigate } from "react-router-dom";
 const HomePage = () => {
+  const zx9speaker = db.filter((item) => item.name === `ZX9 Speaker`)[0];
+  const zx7speaker = db.filter((item) => item.name === `ZX7 Speaker`)[0];
+  const yx1earphones = db.filter(
+    (item) => item.name === `YX1 Wireless Earphones`
+  )[0];
+
+  const navigate = useNavigate();
   return (
     <>
       <MainContainer flexDir={"column"} bgColor="secColor">
@@ -51,7 +59,7 @@ const HomePage = () => {
                 color={["white", "white", "white"]}
                 textAlign={["center", "center", "center", "left"]}
               >
-                ZX9 SPEAKER
+                {zx9speaker.name.toUpperCase()}
               </Heading>
               <Text
                 variant={"body"}
@@ -62,8 +70,7 @@ const HomePage = () => {
                 maxW="350px"
                 textAlign={["center", "center", "center", "left"]}
               >
-                Upgrade to premium speakers that are phenomenally built to
-                deliver truly remarkable sound.
+                {zx9speaker.description}
               </Text>
               <Button
                 bgColor={"secColor"}
@@ -71,6 +78,7 @@ const HomePage = () => {
                   opacity: 0.5,
                 }}
                 variant={"primary"}
+                onClick={() => navigate(`/product/${zx9speaker.slug}`)}
               >
                 SEE PRODUCT
               </Button>
@@ -91,9 +99,14 @@ const HomePage = () => {
         >
           <Box>
             <Heading mb="36px" variant={"h4"} as="h4">
-              ZX7 SPEAKER
+              {zx7speaker.name}
             </Heading>
-            <Button variant="secondary">SEE PRODUCT</Button>
+            <Button
+              variant="secondary"
+              onClick={() => navigate(`/product/${zx7speaker.slug}`)}
+            >
+              SEE PRODUCT
+            </Button>
           </Box>
         </Flex>
         <Flex
@@ -119,9 +132,14 @@ const HomePage = () => {
             borderRadius={"8px"}
           >
             <Heading variant={"h4"} as="h4" mb="32px">
-              YX1 EARPHONES
+              {yx1earphones.name}
             </Heading>
-            <Button variant={"secondary"}>SEE PRODUCT</Button>
+            <Button
+              variant={"secondary"}
+              onClick={() => navigate(`/product/${yx1earphones.slug}`)}
+            >
+              SEE PRODUCT
+            </Button>
           </Box>
         </Flex>
         <AudioPhileInfo />

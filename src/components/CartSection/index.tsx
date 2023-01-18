@@ -115,7 +115,7 @@ const CartSection = ({ setShowCart }: ICartSection) => {
                     bgColor="#F1F1F1"
                     // p="12px"
                   >
-                    <Image src={"." + item.image.desktop} />
+                    <Image src={item.image.desktop} />
                   </Box>
                   <Box>
                     <Text color="secColor" opacity={1}>

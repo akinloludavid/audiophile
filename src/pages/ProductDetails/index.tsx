@@ -17,6 +17,7 @@ import GoBack from "../../components/GoBack";
 import MainContainer from "../../components/MainContainer";
 import useCustomMediaQuery from "../../customHooks/mediaQuery";
 import db from "../../data.json";
+import { HOME } from "../../routes/pathnames";
 import { useZustStore } from "../../zust/store";
 import CategorySection from "../Home/CategorySection";
 
@@ -37,6 +38,10 @@ const ProductDetails = () => {
   const handleAddProductToCart = () => {
     addToCart({ ...product, quantity: productCount });
   };
+
+  if (!product) {
+    navigate(HOME);
+  }
   return (
     <>
       <MainContainer flexDir={"column"}>

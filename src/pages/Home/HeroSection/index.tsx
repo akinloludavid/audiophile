@@ -1,7 +1,13 @@
 import { Flex, Heading, Button, Box, Text, Image } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { HeroImg } from "../../../asset";
+import db from "../../../data.json";
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+  const heroImgProduct = db.filter(
+    (item) => item.name === `XX99 Mark II Headphones`
+  )[0];
   return (
     <Flex
       align={"center"}
@@ -38,7 +44,7 @@ export const HeroSection = () => {
           color="white"
           my="24px"
         >
-          XX99 Mark II Headphones
+          {heroImgProduct.name}
         </Heading>
         <Text
           textAlign={["center", "center", "center", "left"]}
@@ -48,11 +54,15 @@ export const HeroSection = () => {
           mx={["auto", "auto", 0]}
           maxW={["360px", "360px", "360px", null]}
         >
-          Experience natural, lifelike audio and exceptional build quality made
-          for the passionate music enthusiast.
+          {heroImgProduct.description}
         </Text>
         <Flex justify={["center", "center", "flex-start"]}>
-          <Button mt="40px">SEE PRODUCT</Button>
+          <Button
+            mt="40px"
+            onClick={() => navigate(`/product/${heroImgProduct.slug}`)}
+          >
+            SEE PRODUCT
+          </Button>
         </Flex>
       </Box>
       <Box

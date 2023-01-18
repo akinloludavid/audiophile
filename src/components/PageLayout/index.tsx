@@ -6,7 +6,7 @@ import Navbar from "../Navbar";
 const PageLayout = ({ children }: IChildren) => {
   return (
     <Box display={"flex"} flexDirection="column" minH="100vh" w="100vw">
-      <Box mb={["97px"]}>
+      <Box mb={["97px"]} w="100vw" display={"flex"} justifyContent="center">
         <Navbar />
       </Box>
       {children}
