@@ -1,6 +1,7 @@
 import { Box, Flex, Icon, Image, Link as Clink, Text } from "@chakra-ui/react";
 import MainContainer from "../MainContainer";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FaTimes } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import { HOME } from "../../routes/pathnames";
@@ -50,10 +51,12 @@ const Navbar = () => {
           <Flex align={"center"} gap="42px">
             <Icon
               display={isTablet ? "block" : "none"}
-              as={GiHamburgerMenu}
+              as={isMenuOpen ? FaTimes : GiHamburgerMenu}
               color="white"
               cursor="pointer"
               onClick={handleToggleMenu}
+              fontSize="xl"
+              strokeWidth="2"
             />
             <Image
               src={Logo}
