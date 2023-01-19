@@ -22,6 +22,7 @@ const CategoryCard = ({ image, title, route }: ICategoryCard) => {
       <Image
         h={["160px", "160px", "140px", "140px", "200px"]}
         src={image}
+        alt={title}
         mt={["-80px", "-80px", "-60px", "-80px"]}
       />
       <Heading variant={"h6"} as="h6" mb="15px">
