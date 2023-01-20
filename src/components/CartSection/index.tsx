@@ -82,7 +82,7 @@ const CartSection = ({ setShowCart }: ICartSection) => {
         flexDirection={"column"}
         borderRadius="8px"
         outline={"none"}
-        p="32px"
+        p={["24px", "32px"]}
         ref={boxRef}
         tabIndex={1}
         onBlur={handleBlur}
@@ -142,7 +142,7 @@ const CartSection = ({ setShowCart }: ICartSection) => {
               <Flex align={"center"} gap="4px">
                 <Grid
                   templateColumns="repeat(8,1fr)"
-                  w={["70px", "80px", "120px"]}
+                  w={["75px", "80px", "120px"]}
                   h="32px"
                   alignItems={"center"}
                   bgColor="#F1F1F1"
@@ -167,7 +167,7 @@ const CartSection = ({ setShowCart }: ICartSection) => {
                     <Heading
                       variant="h6"
                       as="h6"
-                      fontSize={["14px", "14px", "18px"]}
+                      fontSize={["12px", "14px", "18px"]}
                       textAlign={"center"}
                     >
                       {item.quantity}
