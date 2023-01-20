@@ -5,11 +5,13 @@ import {
   Grid,
   GridItem,
   Heading,
+  Icon,
   Image,
   Text,
 } from "@chakra-ui/react";
 import { nanoid } from "nanoid";
 import { MutableRefObject, SyntheticEvent, useEffect, useRef } from "react";
+import { FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { CHECKOUT } from "../../routes/pathnames";
 import { ICartSection } from "../../types";
@@ -23,13 +25,20 @@ const CartSection = ({ setShowCart }: ICartSection) => {
   useEffect(() => {
     boxRef.current?.focus();
   }, []);
-  const { cart, increaseProductInCart, decreaseProductInCart, emptyCart } =
-    useZustStore((state) => state);
+  const {
+    cart,
+    removeFromCart,
+    increaseProductInCart,
+    decreaseProductInCart,
+    emptyCart,
+  } = useZustStore((state) => state);
   const totalAmount = cart.reduce(
     (acc, curr: any) => acc + curr.price * curr.quantity,
     0
   );
-
+  const handleRemoveProduct = (product: any) => {
+    removeFromCart(product);
+  };
   const increaseProductQty = (product: any) => {
     increaseProductInCart(product);
   };
@@ -130,10 +139,10 @@ const CartSection = ({ setShowCart }: ICartSection) => {
                   </Box>
                 </Flex>
               </Box>
-              <Box>
+              <Flex align={"center"} gap="4px">
                 <Grid
                   templateColumns="repeat(8,1fr)"
-                  w={["80px", "80px", "120px"]}
+                  w={["70px", "80px", "120px"]}
                   h="32px"
                   alignItems={"center"}
                   bgColor="#F1F1F1"
@@ -181,7 +190,13 @@ const CartSection = ({ setShowCart }: ICartSection) => {
                     </Heading>
                   </GridItem>
                 </Grid>
-              </Box>
+                <Icon
+                  as={FaTimes}
+                  color="secColor"
+                  opacity={"0.6"}
+                  onClick={() => handleRemoveProduct(item)}
+                />
+              </Flex>
             </Flex>
           ))}
         </Box>

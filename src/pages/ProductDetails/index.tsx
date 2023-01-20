@@ -9,7 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { SpeakerBg } from "../../asset";
 import AudioPhileInfo from "../../components/AudioFileInfo";
@@ -28,6 +28,16 @@ const ProductDetails = () => {
   const { id = "" } = useParams();
   const product = db.filter((el) => String(el.id) === id || el.slug === id)[0];
 
+  if (!product) {
+    return (
+      <Flex justify={"center"} align="center" w="100vw" h="100vh">
+        <Heading variant={"h4"} as="h4">
+          Product not Found
+        </Heading>
+      </Flex>
+    );
+  }
+
   const { isMobile, isTablet } = useCustomMediaQuery();
   const increaseProductQty = () => {
     setProductCount((prev) => prev + 1);
@@ -38,10 +48,9 @@ const ProductDetails = () => {
   const handleAddProductToCart = () => {
     addToCart({ ...product, quantity: productCount });
   };
-
-  if (!product) {
-    navigate(HOME);
-  }
+  useEffect(() => {
+    return () => setProductCount(1);
+  }, [id]);
   return (
     <>
       <MainContainer flexDir={"column"}>
