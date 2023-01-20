@@ -155,7 +155,12 @@ const CartSection = ({ setShowCart }: ICartSection) => {
                     </Heading>
                   </GridItem>
                   <GridItem colSpan={2}>
-                    <Heading variant="h6" as="h6" textAlign={"center"}>
+                    <Heading
+                      variant="h6"
+                      as="h6"
+                      fontSize={["14px", "14px", "18px"]}
+                      textAlign={"center"}
+                    >
                       {item.quantity}
                     </Heading>
                   </GridItem>
