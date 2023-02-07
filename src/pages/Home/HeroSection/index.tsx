@@ -21,7 +21,7 @@ export const HeroSection = () => {
       overflowY="clip"
     >
       <Box
-        w={["100%", "100%", "100%", "50%", "auto"]}
+        w={["100%", "100%", "40%", "40%", "auto"]}
         maxW={[null, null, "400px"]}
       >
         <Text
@@ -39,7 +39,7 @@ export const HeroSection = () => {
         <Heading
           textAlign={["center", "center", "left"]}
           variant={"h1"}
-          fontSize={["36px", "56px"]}
+          fontSize={["36px", "36px", "36px", "56px"]}
           as="h1"
           color="white"
           my="24px"
@@ -47,7 +47,7 @@ export const HeroSection = () => {
           {heroImgProduct.name}
         </Heading>
         <Text
-          textAlign={["center", "center", "center", "left"]}
+          textAlign={["center", "center", "left", "left"]}
           variant={"body"}
           color="white"
           opacity={"0.75"}
@@ -66,7 +66,7 @@ export const HeroSection = () => {
         </Flex>
       </Box>
       <Box
-        h={["600px", "500px", "500px", "500px", "700px"]}
+        h={["600px", "500px", "500px", "500px", "600px"]}
         mt={["-30px"]}
         w={["50%", "auto"]}
         mb="50px"
