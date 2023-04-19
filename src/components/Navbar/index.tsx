@@ -11,8 +11,9 @@ import { useState } from "react";
 import { useZustStore } from "../../zust/store";
 import CartSection from "../CartSection";
 import { Logo } from "../../asset";
+import { isNavActive } from "../../utils/helper";
 export const navLinks = [
-  { label: "HOME", route: "" },
+  { label: "HOME", route: "/" },
   { label: "HEADPHONES", route: "/headphones" },
   { label: "SPEAKERS", route: "/speakers" },
   { label: "EARPHONES", route: "/earphones" },
@@ -70,7 +71,7 @@ const Navbar = () => {
               <Clink
                 key={el.route}
                 as={Link}
-                color="white"
+                color={isNavActive(el.route) ? "pryColor" : "white"}
                 fontSize={"13px"}
                 fontWeight="700"
                 lineHeight={"25px"}

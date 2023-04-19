@@ -4,3 +4,7 @@ export const shortenProductName = (str: string) => {
     .filter((el, idx, arr) => idx !== arr.length - 1)
     .join(" ");
 };
+
+export const isNavActive = (str: string) => {
+  return window.location.pathname === str;
+};
