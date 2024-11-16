@@ -8,7 +8,11 @@ const MainContainer = ({ children, ...rest }: IMainContainer) => {
     <Flex
       w="100%"
       flexDirection={"column"}
-      maxW={"1440px"}
+      sx={{
+      "@media screen and (min-width: 1566px)": {
+          maxW:'1600px'
+        }
+      }}
       mx="auto"
       px={["24px", "40px", "40px", "80px", "165px"]}
       {...rest}
